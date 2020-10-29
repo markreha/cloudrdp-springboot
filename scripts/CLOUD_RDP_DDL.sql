@@ -1,0 +1,144 @@
+CREATE DATABASE  IF NOT EXISTS `RDP_CLOUD` /*!40100 DEFAULT CHARACTER SET latin1 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `RDP_CLOUD`;
+-- MySQL dump 10.13  Distrib 8.0.22, for Linux (x86_64)
+--
+-- Host: localhost    Database: rdp_cloud
+-- ------------------------------------------------------
+-- Server version	8.0.22-cluster
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `CONTAINER_IMAGES`
+--
+
+DROP TABLE IF EXISTS `CONTAINER_IMAGES`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `CONTAINER_IMAGES` (
+  `CI_ID` int NOT NULL AUTO_INCREMENT,
+  `C_ID` int NOT NULL,
+  `I_ID` int NOT NULL,
+  PRIMARY KEY (`CI_ID`),
+  KEY `C_ID` (`C_ID`),
+  KEY `I_ID` (`I_ID`),
+  CONSTRAINT `CONTAINER_IMAGES_IBFK_1` FOREIGN KEY (`C_ID`) REFERENCES `CONTAINERS` (`C_ID`),
+  CONSTRAINT `CONTAINER_IMAGES_IBFK_2` FOREIGN KEY (`I_ID`) REFERENCES `IMAGES` (`I_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `CONTAINER_IMAGES`
+--
+
+LOCK TABLES `CONTAINER_IMAGES` WRITE;
+/*!40000 ALTER TABLE `CONTAINER_IMAGES` DISABLE KEYS */;
+/*!40000 ALTER TABLE `CONTAINER_IMAGES` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `CONTAINERS`
+--
+
+DROP TABLE IF EXISTS `CONTAINERS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `CONTAINERS` (
+  `C_ID` int NOT NULL AUTO_INCREMENT,
+  `C_NAME` varchar(32) NOT NULL,
+  `C_DESCRIPTION` varchar(200) DEFAULT NULL,
+  `C_DOCKERID` varchar(32) NOT NULL,
+  `U_NAME` varchar(32) NOT NULL,
+  `I_ID` int NOT NULL,
+  PRIMARY KEY (`C_ID`),
+  KEY `U_NAME` (`U_NAME`),
+  KEY `CONTAINER_IMAGES_FK` (`I_ID`),
+  CONSTRAINT `CONTAINERS_IB_FK` FOREIGN KEY (`U_NAME`) REFERENCES `USERS` (`U_NAME`) ON UPDATE CASCADE,
+  CONSTRAINT `CONTAINER_IMAGES_FK` FOREIGN KEY (`I_ID`) REFERENCES `IMAGES` (`I_ID`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `CONTAINERS`
+--
+
+LOCK TABLES `CONTAINERS` WRITE;
+/*!40000 ALTER TABLE `CONTAINERS` DISABLE KEYS */;
+INSERT INTO `CONTAINERS` VALUES (1,'redhat container','small container','dockerId232','tester',1),(2,'redhat container','medium container','dockerId2452','tester',2);
+/*!40000 ALTER TABLE `CONTAINERS` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `IMAGES`
+--
+
+DROP TABLE IF EXISTS `IMAGES`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `IMAGES` (
+  `I_ID` int NOT NULL AUTO_INCREMENT,
+  `I_INSTANCE` varchar(32) NOT NULL,
+  `I_VERSION` varchar(32) NOT NULL,
+  `I_TIER` varchar(32) NOT NULL,
+  `I_CPU` decimal(6,2) NOT NULL,
+  `I_RAM` decimal(6,2) NOT NULL,
+  `I_STORAGE` int NOT NULL,
+  PRIMARY KEY (`I_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `IMAGES`
+--
+
+LOCK TABLES `IMAGES` WRITE;
+/*!40000 ALTER TABLE `IMAGES` DISABLE KEYS */;
+INSERT INTO `IMAGES` VALUES (1,'Redhat','1.1','small',10.00,11.00,12),(2,'Redhat','1.2','medium',20.00,21.00,22);
+/*!40000 ALTER TABLE `IMAGES` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `USERS`
+--
+
+DROP TABLE IF EXISTS `USERS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `USERS` (
+  `U_ID` int NOT NULL AUTO_INCREMENT,
+  `U_NAME` varchar(32) NOT NULL,
+  `U_PASSWORD` varchar(32) NOT NULL,
+  PRIMARY KEY (`U_ID`),
+  UNIQUE KEY `USERS` (`U_NAME`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `USERS`
+--
+
+LOCK TABLES `USERS` WRITE;
+/*!40000 ALTER TABLE `USERS` DISABLE KEYS */;
+INSERT INTO `USERS` VALUES (1,'tester','tester');
+/*!40000 ALTER TABLE `USERS` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2020-10-28 17:18:32
