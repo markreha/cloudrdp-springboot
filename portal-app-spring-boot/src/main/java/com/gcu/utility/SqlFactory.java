@@ -17,17 +17,17 @@ public class SqlFactory
 		
 		if (obj.equals(Container.class))
 		{
- 			sql = "SELECT * FROM `containers` " + 
-					"LEFT JOIN `images` ON `containers`.`i_ID` = `images`.`i_ID` " + 
-					"WHERE `containers`.`u_NAME` = (?)";
+ 			sql = "SELECT * FROM `CONTAINERS` " + 
+					"LEFT JOIN `IMAGES` ON `CONTAINERS`.`i_ID` = `IMAGES`.`i_ID` " + 
+					"WHERE `CONTAINERS`.`U_NAME` = (?)";
 		}
 		else if (obj.equals(Image.class))
 		{
- 			sql = "SELECT * FROM `images` WHERE `i_ID` = ?";
+ 			sql = "SELECT * FROM `IMAGES` WHERE `I_ID` = ?";
 		}
 		else if (obj.equals(User.class))
 		{
- 			sql = "SELECT * FROM `users` WHERE BINARY `u_NAME` = ? AND BINARY `u_PASSWORD` = ?";
+ 			sql = "SELECT * FROM `USERS` WHERE BINARY `U_NAME` = ? AND BINARY `U_PASSWORD` = ?";
 		}
 		
 		return sql;
@@ -39,11 +39,11 @@ public class SqlFactory
 		
 		if (obj.equals(Container.class))
 		{
-			sql = "SELECT * FROM `containers` WHERE `u_NAME` = ? AND `i_ID` = ?";
+			sql = "SELECT * FROM `CONTAINERS` WHERE `U_NAME` = ? AND `I_ID` = ?";
 		}
 		else if (obj.equals(User.class))
 		{
-			sql = "SELECT * FROM `users` WHERE UPPER(`u_NAME`) LIKE UPPER(?)";
+			sql = "SELECT * FROM `USERS` WHERE UPPER(`U_NAME`) LIKE UPPER(?)";
 		}
 		
 		return sql;
@@ -55,7 +55,7 @@ public class SqlFactory
 		
 		if (obj.equals(Image.class))
 		{
-			sql = "SELECT * FROM `images` LIMIT 1000";
+			sql = "SELECT * FROM `IMAGES` LIMIT 1000";
 		}
 		
 		return sql;
@@ -75,20 +75,20 @@ public class SqlFactory
 		// If object is of instance Container
 		if(obj.equals(Container.class))
 		{
-			sql = "INSERT INTO `containers` (c_NAME, c_DESCRIPTION, c_DOCKERID, u_NAME, i_ID) VALUES "
+			sql = "INSERT INTO `CONTAINERS` (C_NAME, C_DESCRIPTION, C_DOCKERID, U_NAME, I_ID) VALUES "
 					+ "(?, ?, ?, ?, ?)";
 		}
 		// If object is of instance Image
 		else if (obj.equals(Image.class))
 		{
-			sql = "INSERT INTO `images` "
-					+ "(i_ID, i_INSTANCE, i_NAME, i_VERSION, i_PORT, i_TIER, i_CPU, i_RAM, i_STORAGE) VALUES "
+			sql = "INSERT INTO `IMAGES` "
+					+ "(I_ID, I_INSTANCE, I_NAME, I_VERSION, I_PORT, I_TIER, I_CPU, I_RAM, I_STORAGE) VALUES "
 					+ "(NULL, ?, ?, ?, ?, ?, ?, ?, ?)";
 		}
 		// If object is instance of User
 		else if (obj.equals(User.class))
 		{
-			sql = "INSERT INTO `users` (u_NAME, u_PASSWORD) VALUES (?, ?)";
+			sql = "INSERT INTO `USERS` (U_NAME, U_PASSWORD) VALUES (?, ?)";
 		}
 		
 		return sql;
@@ -108,18 +108,18 @@ public class SqlFactory
 		// If object is of instance Container
 		if(obj.equals(Container.class))
 		{
-			sql = "UPDATE `containers` SET c_DOCKERID = ? WHERE  u_NAME = ? AND i_ID = ?";
+			sql = "UPDATE `CONTAINERS` SET C_DOCKERID = ? WHERE  U_NAME = ? AND I_ID = ?";
 		}
 		// If object is of instance Image
 		else if (obj.equals(Image.class))
 		{
-			sql = "UPDATE `images` SET i_INSTANCE = ?, i_NAME = ?, i_VERSION = ?, i_PORT = ?, i_TIER = ?, i_CPU = ?, "
-					+ "i_RAM = ?, i_STORAGE = ? WHERE i_ID = ?";
+			sql = "UPDATE `IMAGES` SET I_INSTANCE = ?, I_NAME = ?, I_VERSION = ?, I_PORT = ?, I_TIER = ?, I_CPU = ?, "
+					+ "I_RAM = ?, I_STORAGE = ? WHERE I_ID = ?";
 		}
 		// If object is instance of User
 		else if (obj.equals(User.class))
 		{
-			sql = "UPDATE `users` SET u_NAME = ?, u_PASSWORD = ? WHERE u_ID = ?";
+			sql = "UPDATE `USERS` SET U_NAME = ?, U_PASSWORD = ? WHERE U_ID = ?";
 		}
 		
 		return sql;
@@ -146,32 +146,32 @@ public class SqlFactory
 		if (obj.equals(Container.class))
 		{
 			return (T) new Container(
-					srs.getString("c_NAME"),
-					srs.getString("c_DESCRIPTION"),
-					srs.getString("c_DOCKERID"),
-					srs.getString("u_NAME"),
-					srs.getInt("i_ID")
+					srs.getString("C_NAME"),
+					srs.getString("C_DESCRIPTION"),
+					srs.getString("C_DOCKERID"),
+					srs.getString("U_NAME"),
+					srs.getInt("I_ID")
 					);
 		}
 		else if (obj.equals(Image.class))
 		{
 			return (T) new Image(
-					srs.getInt("i_ID"),
-					srs.getString("i_INSTANCE"),
-					srs.getString("i_NAME"),
-					srs.getString("i_VERSION"),
-					srs.getInt("i_PORT"),
-					srs.getString("i_TIER"),
-					srs.getFloat("i_CPU"),
-					srs.getBigDecimal("i_RAM"),
-					srs.getInt("i_STORAGE")
+					srs.getInt("I_ID"),
+					srs.getString("I_INSTANCE"),
+					srs.getString("I_NAME"),
+					srs.getString("I_VERSION"),
+					srs.getInt("I_PORT"),
+					srs.getString("I_TIER"),
+					srs.getFloat("I_CPU"),
+					srs.getBigDecimal("I_RAM"),
+					srs.getInt("I_STORAGE")
 					);
 		}
 		else if (obj.equals(User.class))
 		{
 			return (T) new User(
-					srs.getString("u_NAME"),
-					srs.getString("u_PASSWORD")
+					srs.getString("U_NAME"),
+					srs.getString("U_PASSWORD")
 					);
 		}
 		
@@ -192,32 +192,32 @@ public class SqlFactory
 		if (obj.equals(Container.class))
 		{
 			return (T) new Container(
-					rs.getString("c_NAME"),
-					rs.getString("c_DESCRIPTION"),
-					rs.getString("c_DOCKERID"),
-					rs.getString("u_NAME"),
-					rs.getInt("i_ID")
+					rs.getString("C_NAME"),
+					rs.getString("C_DESCRIPTION"),
+					rs.getString("C_DOCKERID"),
+					rs.getString("U_NAME"),
+					rs.getInt("I_ID")
 					);
 		}
 		else if (obj.equals(Image.class))
 		{
 			return (T) new Image(
-					rs.getInt("i_ID"),
-					rs.getString("i_INSTANCE"),
-					rs.getString("i_NAME"),
-					rs.getString("i_VERSION"),
-					rs.getInt("i_PORT"),
-					rs.getString("i_TIER"),
-					rs.getFloat("i_CPU"),
-					rs.getBigDecimal("i_RAM"),
-					rs.getInt("i_STORAGE")
+					rs.getInt("I_ID"),
+					rs.getString("I_INSTANCE"),
+					rs.getString("I_NAME"),
+					rs.getString("I_VERSION"),
+					rs.getInt("I_PORT"),
+					rs.getString("I_TIER"),
+					rs.getFloat("I_CPU"),
+					rs.getBigDecimal("I_RAM"),
+					rs.getInt("I_STORAGE")
 					);
 		}
 		else if (obj.equals(User.class))
 		{
 			return (T) new User(
-					rs.getString("u_NAME"),
-					rs.getString("u_PASSWORD")
+					rs.getString("U_NAME"),
+					rs.getString("U_PASSWORD")
 					);
 		}
 		
