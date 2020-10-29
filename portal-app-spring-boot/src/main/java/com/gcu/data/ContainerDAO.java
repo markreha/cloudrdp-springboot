@@ -60,22 +60,22 @@ public class ContainerDAO implements ContainerDAOInterface
 							Container container = new Container();
 							
 							// Setting Container Values
-							container.setName(rs.getString("containers.c_NAME"));
-							container.setDescription(rs.getString("containers.c_DESCRIPTION"));
-							container.setDockerId(rs.getString("containers.c_DOCKERID"));
-							container.setUsername(rs.getString("containers.u_NAME"));
-							container.setImageId(rs.getInt("containers.i_ID"));
+							container.setName(rs.getString("CONTAINERS.C_NAME"));
+							container.setDescription(rs.getString("CONTAINERS.C_DESCRIPTION"));
+							container.setDockerId(rs.getString("CONTAINERS.C_DOCKERID"));
+							container.setUsername(rs.getString("CONTAINERS.U_NAME"));
+							container.setImageId(rs.getInt("CONTAINERS.I_ID"));
 							
 							// Setting Image Values
-							container.setImageId(rs.getInt("images.i_ID"));
-							container.setInstance(rs.getString("images.i_INSTANCE"));
-							container.setName(rs.getString("images.i_NAME"));
-							container.setVersion(rs.getString("images.i_VERSION"));
-							container.setPort(rs.getInt("images.i_PORT"));
-							container.setTier(rs.getString("images.i_TIER"));
-							container.setCpu(rs.getFloat("images.i_CPU"));
-							container.setRam(rs.getBigDecimal("images.i_RAM"));
-							container.setStorage(rs.getInt("images.i_STORAGE"));
+							container.setImageId(rs.getInt("IMAGES.I_ID"));
+							container.setInstance(rs.getString("IMAGES.I_INSTANCE"));
+							container.setName(rs.getString("IMAGES.I_NAME"));
+							container.setVersion(rs.getString("IMAGES.I_VERSION"));
+							container.setPort(rs.getInt("IMAGES.I_PORT"));
+							container.setTier(rs.getString("IMAGES.I_TIER"));
+							container.setCpu(rs.getFloat("IMAGES.I_CPU"));
+							container.setRam(rs.getBigDecimal("IMAGES.I_RAM"));
+							container.setStorage(rs.getInt("IMAGES.I_STORAGE"));
 							
 							return container;
 						}
