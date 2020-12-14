@@ -4,10 +4,25 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Cloud RDP</title>
+		<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1.0"/>
+		
+		<link rel="stylesheet" media="all" type="text/css" href="../../css/header.css">
+		<link rel="stylesheet" media="all" type="text/css" href="../../css/layouts.css">
+		<link rel="stylesheet" media="all" type="text/css" href="../../css/commons.css">
+		<link rel="stylesheet" media="all" type="text/css" href="../../css/containers.css">
+		<link rel="stylesheet" media="all" type="text/css" href="../../css/modal.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 		<!-- <link rel="stylesheet" href="" th:href="@{}"/> -->
 		<!-- <script th:src="@{}"></script> -->
+		<script type="text/javascript" src="../../js/utility.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/ui/1.11.0/jquery-ui.min.js"></script>
 	</head>
 	<body>
+		<img class="logo" src="https://www.gcu.edu/sites/default/files/media/Documents/brand/logos/jpeg/GCU-267.jpg"/>
+
+		<img class="logo" style="float:right; padding: 10px;"src="https://mk0teamcolorcodtgc6i.kinstacdn.com/wp-content/uploads/2018/04/grand_canyon_university.jpg"/>
 		<div th:insert="../fragments/menu::menu"> </div>
 		<div layout:fragment="content"></div>
 		<div th:insert="../fragments/footer::footer"> </div>
