@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{../fragments/masterTemplate}">
-	<div layout:fragment="content">
+	<div layout:fragment="content" align="center">
 		<form class="form" th:object="${user}" th:action="@{/user/loginUser}" method="POST">
 			<h2 class="mgn-10">Login</h2>
 			<div class="column">

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{../fragments/masterTemplate}">
 	<div layout:fragment="content" align="center">
-		<form class="form" th:object="${user}" th:action="@{/user/loginUser}" method="POST">
-			<h2 class="mgn-10">Login</h2>
+		<form class="form" th:object="${user}" th:action="@{/user/registerUser}" method="POST">
+			<h2 class="mgn-10">Register</h2>
 			<div class="column">
 				<div class="row">
 				   	<div class="pad-20" style="width:150px">Username:</div>
@@ -13,9 +13,9 @@
 				<div class="row">
 				   	<div class="pad-20" style="width:150px">Password:</div>
 				    <input path="password" minlength="5" placeholder="password" type="password" class="input" required="true" value="" maxlength="20" />
-			   </div>
+				</div>
 			</div>
-			<input class="btn-purple font-bold mgn-col-10" type="submit" value="Login" />
+			<input class="btn-purple font-bold mgn-col-10" type="submit" value="Sign Up" />
 		</form>
 		<div style="color: red"></div>
 		<div style="color: green"></div>
