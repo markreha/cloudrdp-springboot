@@ -1,5 +1,7 @@
 package com.gcu.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,9 +12,9 @@ import org.springframework.web.bind.support.SessionStatus;
 public class IndexController
 {
 	@RequestMapping(path="/", method=RequestMethod.GET)
-	public String displayPage(SessionStatus session)
+	public String displayPage(HttpSession session)
 	{
-		if(session.equals(null))
+		if(session.getAttribute("principle") == null)
 		{
 			return "login";
 		}

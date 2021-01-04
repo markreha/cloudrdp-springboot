@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{../fragments/masterTemplate}">
+	<div>
+		<h2 style="margin: 0.5em 0">Your Containers</h2>
+	</div>
+	<th:choose>
+		<th:when test="${not empty containers}">
+			<div class="input row">
+				<i style="color: #522398" class="fas fa-search icon"></i><input
+					placeholder="Search" type="text" id="filter" autocomplete="off"
+					onkeyup="filterFunction()" />
+			</div>
+			<div class="images-container">
+				<th:forEach items="${containers}" var="container">
+					<div id="myBtn" class="column images">
+						<th:if test = "${container.instance == 'Nginx'}">
+							<img src="https://quiksite.com/wp-content/uploads/2016/09/Nginx-Logo-02.png" />
+						</th:if>
+						<th:if test = "${container.instance == 'Tomcat'}">
+							<img src="https://fixstream.com/wp-content/uploads/2015/08/apache-tomcat-logo-square.jpg" />
+						</th:if>
+						<span style="margin-top: 10px">Instance:
+							${container.instance}</span> <span style="margin-top: 10px">Version:
+							${container.version}</span> <span style="margin-top: 20px">Tier:
+							${container.tier}</span> <span style="margin-top: 10px">CPU:
+							${container.cpu}</span> <span style="margin-top: 10px">RAM:
+							${container.ram}</span> <span style="margin-top: 10px">Storage:
+							${container.storage}</span> <span style="margin-top: 20px">${container.description}
+						</span>
+					</div>
+				</th:forEach>
+			</div>
+		</th:when>
+		<th:otherwise>
+			<div style="align-items: center;" class="column">
+				You have no containers! <a class="btn btn-purple font-bold mgn-col-10" href="${/image/catalog}">
+					<span>Create a Container</span>
+				</a>
+			</div>
+		</th:otherwise>
+	</th:choose>
+</html>
