@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{../fragments/masterTemplate}">
+	<div>
+		<h2 style="margin: 0.5em 0">Select an Image</h2>
+	</div>
+	<th:choose>
+		<th:when test="${not empty images}">
+			<div class="input row">
+				<i style="color: #522398" class="fas fa-search icon"></i><input
+					placeholder="Search" type="text" id="filter" autocomplete="off"
+					onkeyup="filterFunction()" />
+			</div>
+			<div class="images-container">
+				<th:forEach items="${images}" var="image">
+					<div onclick="javascript:openModal(this)" class="column images">
+						<th:if test = "${image.instance == 'Nginx'}">
+							<img src="https://quiksite.com/wp-content/uploads/2016/09/Nginx-Logo-02.png" />
+						</th:if>
+						<th:if test = "${image.instance == 'Tomcat'}">
+							<img src="https://fixstream.com/wp-content/uploads/2015/08/apache-tomcat-logo-square.jpg" />
+						</th:if>
+						<span style="margin-top: 10px">
+							Instance: <span id="image-instance">${image.instance}</span>
+						</span>
+						<span style="margin-top: 10px">
+							Version: <span id="image-version">${image.version}</span>
+						</span>
+						<span style="margin-top: 20px">
+							Tier: <span id="image-tier">${image.tier}</span>
+						</span>
+						<span style="margin-top: 10px">
+							CPU: <span id="image-cpu">${image.cpu}</span>
+						</span>
+						<span style="margin-top: 10px">
+							RAM: <span id="image-ram">${image.ram}</span>
+						</span>
+						<span style="margin-top: 10px">
+							Storage: <span id="image-storage">${image.storage}</span>
+						</span>
+						<input id="image-imageId" type="hidden" value="${image.imageId}" />
+					</div>
+				</th:forEach>
+			</div>
+			<div id="myModal" class="modal">
+				<div class="modal-content">
+					<div class="modal-header">
+						<span onclick="javascript:closeModal()" class="close">&times;</span>
+						<h2 class="mgn-10">Container Details</h2>
+					</div>
+					<form class="form" th:object="${container}" th:action="@{/container/createContainer}" method="POST">
+						<div class="column">
+							<div class="row">
+								<div class="pad-20" style="width: 150px">Name:</div>
+								<input path="name" minlength="5" placeholder="Container Name" class="input" required="true" type="text" value="" maxlength="20" />
+							</div>
+						</div>
+						<div class="column">
+							<div class="row">
+								<div class="pad-20" style="width: 150px">Description:</div>
+								<input path="description" placeholder="Description" type="text" class="input" value="" maxlength="200" />
+							</div>
+						</div>
+						<div class="column">
+							<div class="row">
+								<div class="pad-20" style="width: 150px">Instance:</div>
+								<input path="instance" id="form-instance" value="" readonly="true" />
+							</div>
+						</div>
+						<div class="column">
+							<div class="row">
+								<div class="pad-20" style="width: 150px">Version:</div>
+								<input path="version" id="form-version" value="" readonly="true" />
+							</div>
+						</div>
+						<div class="column">
+							<div class="row">
+								<div class="pad-20" style="width: 150px">Tier:</div>
+								<input path="tier" id="form-tier" value="" readonly="true" />
+							</div>
+						</div>
+						<div class="column">
+							<div class="row">
+								<div class="pad-20" style="width: 150px">CPU:</div>
+								<input path="cpu" id="form-cpu" value="" readonly="true" />
+							</div>
+						</div>
+						<div class="column">
+							<div class="row">
+								<div class="pad-20" style="width: 150px">RAM:</div>
+								<input path="ram" id="form-ram" value="" readonly="true" />
+							</div>
+						</div>
+	
+						<div class="column">
+							<div class="row">
+								<div class="pad-20" style="width: 150px">Storage:</div>
+								<input path="storage" id="form-storage" value="" readonly="true" />
+							</div>
+						</div>
+						<div class="column">
+							<input id="form-imageId" path="imageId" type="hidden" readonly="true" />
+						</div>
+						<input class="btn-purple font-bold mgn-col-10" type="submit" value="Create Container" />
+					</form>
+				</div>
+			</div>
+		</th:when>
+	</th:choose>
+</html>
