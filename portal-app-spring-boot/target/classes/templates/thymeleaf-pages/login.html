@@ -6,13 +6,15 @@
 			<div class="column">
 				<div class="row">
 				   	<div class="pad-20" style="width:150px">Username:</div>
-				    <input path="username" minlength="5" placeholder="username" class="input" required="true" type="text" value="" maxlength="20" />
+				    <input field="${username}" minlength="5" placeholder="username" class="input" required="required" type="text" value="" maxlength="20" />
+				    <!-- <div th:if="${#fields.hasErrors('username')}" errors="${username}"> username error</div> -->
 			   </div>
 			</div>
 			<div class="column">
 				<div class="row">
 				   	<div class="pad-20" style="width:150px">Password:</div>
-				    <input path="password" minlength="5" placeholder="password" type="password" class="input" required="true" value="" maxlength="20" />
+				    <input field="${password}" minlength="5" placeholder="password" type="password" class="input" required="required" value="" maxlength="20" />
+				    <!-- <div th:if="${#fields.hasErrors('password')}" errors="password"> password error</div> -->
 			   </div>
 			</div>
 			<input class="btn-purple font-bold mgn-col-10" type="submit" value="Login" />

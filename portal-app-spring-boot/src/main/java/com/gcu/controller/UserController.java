@@ -34,7 +34,7 @@ public class UserController
 	 * @return ModelAndView login
 	 */
 	@GetMapping("/login")
-	public ModelAndView login() 
+	public ModelAndView login(@Valid @ModelAttribute("user") User user) 
 	{
 		// MAV login with blank user model
 		return new ModelAndView("login", "user", new User());
@@ -50,23 +50,23 @@ public class UserController
 	 * @return ModelAndView productCat
 	 */
 	@PostMapping("/loginUser")
-	public ModelAndView loginUser(@Valid @ModelAttribute("user") User user, 
-			BindingResult result, ModelMap model) 
+	public ModelAndView loginUser(@Valid @ModelAttribute("user") User user, BindingResult result, ModelMap model) 
 	{
 		try 
 		{
 			// Validate the Form. Return if form is invalid.
 			if (result.hasErrors())
 			{
+				System.out.println("><><><><><><><><><><><><><><><><><><><><===================== position 0 " + result.getAllErrors());
 				return new ModelAndView("login", "user", user);
 			}
-			
+			System.out.println("position 1");
 			// Call User Service to find the user 
 			user = userService.findUser(user);
 			
 			// Save the user in the session
 			model.addAttribute("token", user);
-			
+			System.out.println("position 2");
 			return new ModelAndView("redirect:/container/catalog");
 		} 
 		// Catches UserNotFoundException and return to login view
