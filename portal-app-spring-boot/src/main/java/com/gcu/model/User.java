@@ -13,7 +13,11 @@ public class User
 	@Size(min=0, max=32)
 	private String password;
 
-	public User() {}
+	public User()
+	{
+		username = "";
+		password = "";
+	}
 
 	public User(String username, String password) 
 	{

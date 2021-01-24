@@ -36,11 +36,13 @@ public class ContainerDAO implements ContainerDAOInterface
 	@Override
 	public List<Container> findAllByUsername(final String username)
 	{
+		System.out.println("position 1 in ContainerDAO.findAllUsers");
 		try
 		{
 			// READ query to identify the container by username and password.
+			System.out.println("position 2 in ContainerDAO.findAllUsers");
 			final String query = SqlFactory.findQuery(Container.class);
-
+			System.out.println("position 3 in ContainerDAO.findAllUsers");
 			// Execute query and get result set
 			List<Container> containers = jdbcTemplateObject.query(
 					query,
@@ -50,6 +52,8 @@ public class ContainerDAO implements ContainerDAOInterface
 						public void setValues(PreparedStatement ps) throws SQLException
 						{
 							ps.setString(1, username);
+							System.out.println(ps);
+							System.out.println("position 4 in ContainerDAO.findAllUsers");
 						}
 					},
 					new RowMapper<Container>()

@@ -21,7 +21,13 @@ public class Container extends Image
 	@Size(min=0, max=32)
 	private String username;
 	
-	public Container() {}
+	public Container()
+	{
+		name = "";
+		description = "";
+		dockerId = "";
+		username = "";
+	}
 	
 	public Container(String name, String description, String dockerId) 
 	{

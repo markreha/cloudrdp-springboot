@@ -54,13 +54,15 @@ public class UserService implements UserServiceInterface
 	{
 		// Calls the DAO to find the exact instance of the user
 		User verified = userDAO.find(user);
-		
+		//System.out.println("position one in the userService.finduser method");
 		// if the user was not verified, throw exception
 		if(verified == null)
 		{
+			//System.out.println("position two in the userService.finduser method");
 			throw new UserNotFoundException();
 		}
 		
+		//System.out.println("position three in the userService.finduser method");
 		// return the verified user
 		return verified;
 	}

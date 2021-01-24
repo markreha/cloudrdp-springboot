@@ -112,10 +112,15 @@ public class ContainerService implements ContainerServiceInterface {
 	public List<Container> getAllContainers(User user) throws ContainerNotFoundException {
 		// Call Container DAO to assemble a list of all containers associated to the
 		// username
+		System.out.println("position 1 in the containerService.getAllContainers method");
+		System.out.println(user);
 		List<Container> containers = containerDAO.findAllByUsername(user.getUsername());
-
+		
+		System.out.println("position 2 in the containerService.getAllContainers method");
 		// If list is empty, throw exception
-		if (containers.isEmpty()) {
+		if (containers.isEmpty())
+		{
+			System.out.println("position 3 in the containerService.getAllContainers method");
 			throw new ContainerNotFoundException();
 		}
 

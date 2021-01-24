@@ -60,18 +60,21 @@ public class UserController
 				System.out.println("><><><><><><><><><><><><><><><><><><><><===================== position 0 " + result.getAllErrors());
 				return new ModelAndView("login", "user", user);
 			}
-			System.out.println("position 1");
+			//System.out.println("position 1 in the userController.loginuser method");
+			//System.out.println(user);
 			// Call User Service to find the user 
 			user = userService.findUser(user);
 			
 			// Save the user in the session
-			model.addAttribute("token", user);
-			System.out.println("position 2");
+			//System.out.println("position 2 in the userController.loginuser method");
+			//model.addAttribute("token", user);
+			//System.out.println("position 3 in the userController.loginuser method");
 			return new ModelAndView("redirect:/container/catalog");
 		} 
 		// Catches UserNotFoundException and return to login view
 		catch (UserNotFoundException e) 
 		{
+			System.out.println("position 4 in the userController.loginuser.catch method");
 			ErrorMessage error = new ErrorMessage("Login failed", "Username or password was incorrect. Please try again.", "user/login");
 			return new ModelAndView("error", "error", error);
 		}

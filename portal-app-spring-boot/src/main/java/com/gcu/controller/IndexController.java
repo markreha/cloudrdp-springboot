@@ -14,7 +14,7 @@ public class IndexController
 	@RequestMapping(path="/", method=RequestMethod.GET)
 	public String displayPage(HttpSession session)
 	{
-		if(session.getAttribute("principle") == null)
+		if(session.getAttribute("token") == null)
 		{
 			return "login";
 		}

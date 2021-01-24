@@ -39,20 +39,23 @@ public class ContainerController
 	@GetMapping("/catalog")
 	public ModelAndView productCat(ModelMap model) 
 	{
+		System.out.println("position 1 in the containerController.productCat method");
 		try 
 		{
 			// Call Container Service to assemble all the containers made by the user
+			System.out.println("position 2 in the containerController.productCat method");
 			List<Container> containers = containerService.getAllContainers((User) model.get("token"));
-			
+			System.out.println("position 3 in the containerController.productCat method");
 			// Return containerList as homepage
 			ModelAndView mv = new ModelAndView("containerList");
-			mv.addObject("containers", containers);
+			mv.addObject("containerList", containers);
 			return mv;
 
 		}
 		// Continue to containerList. JSP states the list is empty
 		catch(ContainerNotFoundException e)
 		{
+			System.out.println("position 4 in the containerController.productCat method");
 			ModelAndView mv = new ModelAndView("containerList");
 			return mv;
 		}

@@ -38,13 +38,14 @@ public class UserDAO implements UserDAOInterface
 	 * @throws DatabaseException
 	 */
 	@Override
-	public User find(final User user)
+	public User find(User user)
 	{
 		try
 		{
 			// READ query to identify the user by username and password
 			final String query = SqlFactory.findQuery(User.class);
-			
+			//System.out.println(query);
+			//System.out.println(user);
 			// Execute query and get result set
 			List<User> users = jdbcTemplateObject.query(
 					query,
@@ -55,6 +56,7 @@ public class UserDAO implements UserDAOInterface
 						{
 							ps.setString(1, user.getUsername());
 							ps.setString(2, user.getPassword());
+							//System.out.println(ps);
 						}
 					},
 					new RowMapper<User>()
@@ -67,6 +69,7 @@ public class UserDAO implements UserDAOInterface
 					}
 					);
 			
+			//System.out.println(users.size());
 			// Verify the list contains only one, else return null
 			if(users.size() != 1)
 			{
@@ -74,6 +77,7 @@ public class UserDAO implements UserDAOInterface
 			}
 			
 			// return the User model
+			//System.out.println(users.get(0));
 			return users.get(0);
 		}
 		// Catches SQL / DB Connection Issues.
