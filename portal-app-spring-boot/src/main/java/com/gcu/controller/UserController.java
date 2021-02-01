@@ -66,8 +66,8 @@ public class UserController
 			user = userService.findUser(user);
 			
 			// Save the user in the session
-			//System.out.println("position 2 in the userController.loginuser method");
-			//model.addAttribute("token", user);
+			System.out.println("position 2 in the userController.loginuser method");
+			model.addAttribute("token", user);
 			//System.out.println("position 3 in the userController.loginuser method");
 			return new ModelAndView("redirect:/container/catalog");
 		} 

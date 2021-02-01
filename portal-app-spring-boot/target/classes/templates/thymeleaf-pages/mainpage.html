@@ -1,29 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{../fragments/masterTemplate}">
-	<div class="jumbotron">
-		<th:if test="${empty token }">
+	<div layout:fragment="content" align="center">
+		<div class="jumbotron">
 			<div class="container">
-				<h1 class="display-4">Welcome!</h1>
-				<br/>
-				<p>To start, login or create an account.</p>
-				<br/>
-				Manage your existing Docker containers or deploy a new application to the Swarm!
-				<br/>
-				<p>
-					<a class="btn btn-primary btn-lg" href="@{/user/login}" role="button">Log in »</a>
-					<a class="btn btn-primary btn-lg" href="@{/user/register}" role="button">Register »</a>
-				</p>
-			</div>
-		</th:if>
-		<th:if test="${not empty token}">
-			<div class="container">
-				<h1 class="display-4">Welcome, ${user.username}!</h1>
+				<h1 class="display-4">Welcome, "${user.username}"!</h1>
 				<br/>
 				<p>Manage your existing Docker containers or deploy a new application to the Swarm!</p>
 				<p>
 					<!-- <a class="btn btn-primary btn-lg" href="product/flights" role="button">View flights »</a> -->
 				</p>
 			</div>
-		</th:if>
+		</div>
 	</div>
 </html>
