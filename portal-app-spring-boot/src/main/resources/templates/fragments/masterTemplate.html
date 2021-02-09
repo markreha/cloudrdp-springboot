@@ -20,11 +20,13 @@
 		<script type="text/javascript" src="http://code.jquery.com/ui/1.11.0/jquery-ui.min.js"></script>
 	</head>
 	<body>
-		<img class="logo" src="https://www.gcu.edu/sites/default/files/media/Documents/brand/logos/jpeg/GCU-267.jpg"/>
-
-		<img class="logo" style="float:right; padding: 10px;"src="https://mk0teamcolorcodtgc6i.kinstacdn.com/wp-content/uploads/2018/04/grand_canyon_university.jpg"/>
-		<div th:insert="../fragments/menu::menu"> </div>
-		<div layout:fragment="content"></div>
-		<div th:insert="../fragments/footer::footer"> </div>
+		<div class="header">
+			<img class="logo" src="https://www.gcu.edu/sites/default/files/media/Documents/brand/logos/jpeg/GCU-267.jpg"/>
+			<img class="logo" src="https://mk0teamcolorcodtgc6i.kinstacdn.com/wp-content/uploads/2018/04/grand_canyon_university.jpg"/>
+		</div>
+		<div th:insert="../fragments/menu::menu" class="header" style="clear:both;"> </div>
+		<div layout:fragment="content" class="body"></div>
+		<div th:insert="../fragments/footer::footer" class="footer"> </div>
 	</body>
+	<!-- style=" width: 100vw; position: block;" -->
 </html>

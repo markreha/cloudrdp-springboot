@@ -96,6 +96,7 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 	background: white;
 	padding: 15px;
 	width: -webkit-fill-available;
+	height: 100vh;
 }
 
 /** Inactive **/
@@ -105,4 +106,5 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 	justify-content: center;
 	align-items: center;
 	background: #dbdbdb;
+	bottom: 1000px;
 }

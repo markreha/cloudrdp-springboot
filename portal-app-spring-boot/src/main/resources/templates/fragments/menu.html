@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-	<nav th:fragment="menu" class="navbar navbar-toggleable-md navbar-expand-md py-0">
+	<div class="topnav">
+		<nav th:fragment="menu" class="navbar navbar-toggleable-md navbar-expand-md py-0">
+			<ul class="topnav">
+				<a class="topnav-li a" th:href="@{/}">Cloud RDP</a>
+				<a class="topnav-li a" th:href="@{/user/login}">Login</a>
+				<a class="topnav-li a" th:href="@{/user/register}">Register</a>
+				<a class="topnav-li a" th:href="@{/container/catalog}">Product Catalog</a>
+				<a class="topnav-li a" th:href="@{/user/logout}">Logout</a>
+			</ul>
+		</nav>
+	</div>
+	<!-- <nav th:fragment="menu" class="navbar navbar-toggleable-md navbar-expand-md py-0">
 		<a class="navbar-brand" href="/">Cloud<span class="alt">RDP</span></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNav" aria-controls="navbarNav"
@@ -12,23 +23,23 @@
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item"><a class="nav-link" href="/">Home</a></li>
 			
-			<!-- Not logged in -->
+			<!-- Not logged in 
 			<th:if test="${empty token}">
 				<li class="nav-item"><a class="nav-link" href="@{/user/login}">Login</a></li>
 				<li class="nav-item"><a class="nav-link" href="@{/user/register}">Register</a></li>
 			</th:if>
 			
-			<!-- User logged in -->
+			<!-- User logged in 
 			<th:if test="${not empty token}">
 			
 			</th:if>
 			
 			<li class="nav-item"><a class="nav-link" href="${/container/product}">Product Catalog</a></li>
 		
-			<!-- Logged in -->
+			<!-- Logged in 
 			<th:if test="${not empty token }">
 				<li class="nav-item"><a class="nav-link" href="${/user/logout}">Logout</a></li>
 			</th:if>
 		</ul>
-	</div>
+	</div> -->
 </html>
