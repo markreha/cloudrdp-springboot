@@ -99,12 +99,9 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 	height: 100vh;
 }
 
-/** Inactive **/
-.footer {
-	grid-area: footer;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background: #dbdbdb;
-	bottom: 1000px;
+.menu-specific
+{
+	
+	clear:both;
+	padding-top: 10px;
 }

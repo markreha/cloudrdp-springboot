@@ -7,8 +7,9 @@
 		<title>Cloud RDP</title>
 		<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1.0"/>
 		
-		<link rel="stylesheet" media="all" type="text/css" href="../../css/header.css">
+		
 		<link rel="stylesheet" media="all" type="text/css" href="../../css/layouts.css">
+		<link rel="stylesheet" media="all" type="text/css" href="../../css/header.css">
 		<link rel="stylesheet" media="all" type="text/css" href="../../css/commons.css">
 		<link rel="stylesheet" media="all" type="text/css" href="../../css/containers.css">
 		<link rel="stylesheet" media="all" type="text/css" href="../../css/modal.css">
@@ -18,15 +19,28 @@
 		<script type="text/javascript" src="../../js/utility.js"></script>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="http://code.jquery.com/ui/1.11.0/jquery-ui.min.js"></script>
+		<style>
+			.footer-updated-test
+			{
+				position: fixed;
+				left: 0;
+				bottom: 0;
+				width: 100%;
+				background-color: #522398;
+				color: white;
+				text-align: center;
+				padding: 10px;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="header">
 			<img class="logo" src="https://www.gcu.edu/sites/default/files/media/Documents/brand/logos/jpeg/GCU-267.jpg"/>
 			<img class="logo" src="https://mk0teamcolorcodtgc6i.kinstacdn.com/wp-content/uploads/2018/04/grand_canyon_university.jpg"/>
 		</div>
-		<div th:insert="../fragments/menu::menu" class="header" style="clear:both;"> </div>
+		<div th:insert="../fragments/menu::menu" class="menu-specific header"> </div>
 		<div layout:fragment="content" class="body"></div>
-		<div th:insert="../fragments/footer::footer" class="footer"> </div>
+		<div th:insert="../fragments/footer::footer" class="footer-updated-test"> </div>
 	</body>
 	<!-- style=" width: 100vw; position: block;" -->
 </html>
