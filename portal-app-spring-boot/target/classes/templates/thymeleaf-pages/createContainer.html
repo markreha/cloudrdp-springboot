@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{../fragments/masterTemplate}">
+	<div layout:fragment="content" align="center">
+		<form class="form" th:object="${container}" th:action="@{/container/createContainer}" method="POST">
+			<h2 class="mgn-10">Create a New Container</h2>
+			<div class="column">
+				<div class="row">
+				   	<div class="pad-20" style="width:150px">Container Name:</div>
+				    <input name="containerName" placeholder="containerName" class="input" type="text" id="containerName"/>
+				    <!-- <div th:if="${#fields.hasErrors('username')}" errors="${username}"> username error</div> -->
+			   </div>
+			</div>
+			<div class="column">
+				<div class="row">
+				   	<div class="pad-20" style="width:150px">Description:</div>
+				    <input name="containerDescription" placeholder="containerDescription" class="input" type="text" id="containerDescription"/>
+				    <!-- <div th:if="${#fields.hasErrors('username')}" errors="${username}"> username error</div> -->
+			   </div>
+			</div>
+			<div class="column">
+				<div class="row">
+				   	<div class="pad-20" style="width:150px">Docker ID:</div>
+				    <input name="dockerID" placeholder="dockerID" class="input" type="text" id="dockerID"/>
+				    <!-- <div th:if="${#fields.hasErrors('username')}" errors="${username}"> username error</div> -->
+			   </div>
+			</div>
+			<div class="column">
+				<div class="row">
+				   	<div class="pad-20" style="width:150px">Username:</div>
+				    <input name="username" placeholder="username" class="input" type="text" id="username"/>
+				    <!-- <div th:if="${#fields.hasErrors('username')}" errors="${username}"> username error</div> -->
+			   </div>
+			</div>
+			<input class="btn-purple font-bold mgn-col-10" type="submit" value="Create Container" />
+		</form>
+	</div>
+</html>

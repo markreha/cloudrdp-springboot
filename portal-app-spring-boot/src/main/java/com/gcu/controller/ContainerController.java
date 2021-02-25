@@ -60,7 +60,11 @@ public class ContainerController
 			return mv;
 		}
 	}
-	
+	@GetMapping("/containerForm")
+	public ModelAndView addContainerForm(@Valid @ModelAttribute ("container") Container container)
+	{
+		return new ModelAndView("createContainer", "container", new Container());
+	}
 	@PostMapping("/createContainer")
 	public ModelAndView createContainer(@Valid @ModelAttribute("container") Container container, 
 			BindingResult validate, ModelMap model)

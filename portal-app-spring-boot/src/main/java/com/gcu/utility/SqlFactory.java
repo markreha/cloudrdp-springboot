@@ -18,7 +18,7 @@ public class SqlFactory
 		if (obj.equals(Container.class))
 		{
  			sql = "SELECT * FROM `CONTAINERS` " + 
-					"LEFT JOIN `IMAGES` ON `CONTAINERS`.`i_ID` = `IMAGES`.`i_ID` " + 
+					"LEFT JOIN `IMAGES` ON `CONTAINERS`.`C_ID` = `IMAGES`.`I_ID` " + 
 					"WHERE `CONTAINERS`.`U_NAME` = (?)";
 		}
 		else if (obj.equals(Image.class))
